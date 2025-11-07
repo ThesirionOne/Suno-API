@@ -1,56 +1,73 @@
-[简体中文](README_ZH.md) | [日本語](README_JA.md)
+# React + TypeScript + Vite
 
-### FoxAIHub
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-FoxAIHub focuses on delivering efficient and reliable AI model API services, covering text-to-image, text-to-video, image-to-video, and music generation API, helping you stay ahead at the intersection of creativity and technology.
+Currently, two official plugins are available:
 
-[FoxAIHUb](https://foxaihub.com)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## React Compiler
 
-### Unofficial API
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-This is an unofficial API based on Python and FastAPI. It currently supports generating songs, lyrics, etc.  
-It comes with a built-in token maintenance and keep-alive feature, so you don't have to worry about the token expiring.
+## Expanding the ESLint configuration
 
-### Features
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- Automatic token maintenance and keep-alive
-- Fully asynchronous, fast, suitable for later expansion
-- Simple code, easy to maintain, convenient for secondary development
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-### Usage
-
-#### Configuration
-
-Edit the `.env.example` file, rename to `.env` and fill in the session_id and cookie.
-
-These are initially obtained from the browser, and will be automatically kept alive later.
-
-![cookie](./images/cover.png)
-
-
-#### Run
-
-Install dependencies 
-
-```bash
-pip3 install -r requirements.txt
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-For this part, refer to the FastAPI documentation on your own.
-```bash
-uvicorn main:app 
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-#### Docker
-
-```bash
-docker compose build && docker compose up
-```
-
-#### Documentation
-
-After setting up the service, visit /docs
-
-![docs](./images/docs.png)
