@@ -37,7 +37,15 @@ class SunoCookie:
 
 suno_auth = SunoCookie()
 suno_auth.set_session_id(os.getenv("SESSION_ID"))
-suno_auth.load_cookie(os.getenv("COOKIE"))
+
+# Use AUTHORIZATION if available, otherwise fall back to COOKIE
+authorization = os.getenv("AUTHORIZATION")
+if authorization:
+    # Extract Bearer token
+    token = authorization.replace("Bearer ", "") if authorization.startswith("Bearer ") else authorization
+    suno_auth.set_token(token)
+else:
+    suno_auth.load_cookie(os.getenv("COOKIE", ""))
 
 
 def update_token(suno_cookie: SunoCookie):
