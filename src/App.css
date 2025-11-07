@@ -1,209 +1,315 @@
 .app {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
 
-header {
-  text-align: center;
-  color: white;
-  margin-bottom: 3rem;
+.main-content {
+  min-height: calc(100vh - 80px);
 }
 
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+.navigation {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.container {
+.nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-links {
+  display: flex;
   gap: 2rem;
 }
 
-.config-section,
-.generation-section,
-.history-section {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+.nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
 }
 
-h2 {
-  margin-top: 0;
-  color: #333;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+.nav-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.info {
-  color: #666;
-  font-size: 0.9rem;
+.nav-link.active {
+  color: white;
+  background: rgba(123, 47, 247, 0.2);
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 4rem 0;
+  margin-bottom: 4rem;
+}
+
+.hero-section h1 {
+  font-size: 4rem;
+  font-weight: 800;
   margin-bottom: 1rem;
-  line-height: 1.5;
+  background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(123, 47, 247, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(123, 47, 247, 0.4);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(123, 47, 247, 0.5);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+.generate-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.generate-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.generate-header h1 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.generate-header p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.generation-form {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
-  text-align: left;
+  margin-bottom: 2rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  color: #555;
-  font-weight: 500;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
   width: 100%;
-  padding: 0.75rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
   font-size: 1rem;
+  font-family: inherit;
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #7b2ff7;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(123, 47, 247, 0.2);
 }
 
 .form-group textarea {
   resize: vertical;
-  font-family: inherit;
+  min-height: 120px;
 }
 
-.generate-btn {
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group select option {
+  background: #1a1a2e;
+  color: white;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-group input[type="range"] {
+  padding: 0;
+  cursor: pointer;
+}
+
+.tempo-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.5rem;
+}
+
+.generate-button {
   width: 100%;
-  padding: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #00d4ff, #7b2ff7);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
-.generate-btn:hover:not(:disabled) {
+.generate-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 10px 30px rgba(123, 47, 247, 0.4);
 }
 
-.generate-btn:disabled {
-  opacity: 0.6;
+.generate-button:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.message {
-  margin-top: 1rem;
+.success-message {
+  margin-top: 1.5rem;
   padding: 1rem;
-  border-radius: 8px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  color: #00d4ff;
+  text-align: center;
   font-weight: 500;
 }
 
-.message.success {
-  background: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-}
-
-.message.error {
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-}
-
-.empty {
-  text-align: center;
-  color: #999;
-  padding: 2rem;
-}
-
-.generations-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.generation-card {
-  padding: 1.5rem;
-  border: 2px solid #f0f0f0;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.generation-card:hover {
-  border-color: #667eea;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-}
-
-.generation-card h3 {
-  margin: 0 0 0.5rem 0;
-  color: #333;
-}
-
-.generation-card .prompt {
-  color: #666;
-  margin: 0.5rem 0;
-  line-height: 1.5;
-}
-
-.generation-card .meta {
-  display: flex;
-  gap: 1rem;
-  margin: 0.5rem 0;
-  flex-wrap: wrap;
-}
-
-.generation-card .tags {
-  background: #f0f0f0;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.generation-card .status {
-  background: #667eea;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-}
-
-.generation-card .date {
-  display: block;
-  font-size: 0.85rem;
-  color: #999;
-  margin-top: 0.5rem;
-}
-
 @media (max-width: 768px) {
-  .app {
-    padding: 1rem;
+  .hero-section h1 {
+    font-size: 2.5rem;
   }
 
-  header h1 {
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .nav-container {
+    padding: 0 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .generate-header h1 {
     font-size: 2rem;
-  }
-
-  .config-section,
-  .generation-section,
-  .history-section {
-    padding: 1.5rem;
   }
 }
